@@ -1,0 +1,191 @@
+﻿<UserControl
+    x:Class="DefalutPlugin.View.TrayControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helper="clr-namespace:FinderDemo.Helper"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:DefalutPlugin.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="root"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Controls/index.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Grid.Column="2" Orientation="Horizontal">
+
+            <Button
+                x:Name="overflowBtn"
+                Margin="2"
+                HorizontalContentAlignment="Center"
+                Content="&#xe70d;"
+                FontFamily="Segoe Fluent Icons"
+                FontSize="16"
+                Style="{DynamicResource ItemButton}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:ChangePropertyAction
+                            PropertyName="IsOpen"
+                            TargetName="p3"
+                            Value="true" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+
+            <Popup
+                Name="p3"
+                Margin="2"
+                helper:BlurPopup.On="True"
+                AllowsTransparency="True"
+                Placement="Bottom"
+                PlacementTarget="{Binding ElementName=overflowBtn}"
+                PopupAnimation="Fade"
+                StaysOpen="False">
+                <Border
+                    Margin="0"
+                    Padding="4"
+                    Background="Transparent"
+                    BorderBrush="Gray"
+                    BorderThickness="1"
+                    CornerRadius="4">
+                    <ItemsControl ItemsSource="{Binding OverFlowTrayItems}">
+                        <ItemsControl.ItemTemplate>
+                            <ItemContainerTemplate>
+
+                                <Button Style="{DynamicResource ItemButton}">
+                                    <Button.InputBindings>
+                                        <MouseBinding
+                                            Command="{Binding ElementName=root, Path=DataContext.R_CLICK_Command}"
+                                            CommandParameter="{Binding traydata.hwnd}"
+                                            MouseAction="RightClick" />
+                                        <MouseBinding
+                                            Command="{Binding ElementName=root, Path=DataContext.L_CLICK_Command}"
+                                            CommandParameter="{Binding traydata.hwnd}"
+                                            MouseAction="LeftClick" />
+                                        <MouseBinding
+                                            Command="{Binding ElementName=root, Path=DataContext.L_DB_CLICK_Command}"
+                                            CommandParameter="{Binding traydata.hwnd}"
+                                            MouseAction="LeftDoubleClick" />
+
+
+                                    </Button.InputBindings>
+                                    <Grid Width="140" HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Image Width="16" Source="{Binding icon}" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            MaxWidth="100"
+                                            Text="{Binding pName}"
+                                            TextTrimming="WordEllipsis" />
+                                    </Grid>
+
+
+                                </Button>
+                            </ItemContainerTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Border>
+            </Popup>
+
+            <ItemsControl Grid.Column="2" ItemsSource="{Binding TrayItems}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Style="{DynamicResource ItemButton}" ToolTip="{Binding tip}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding ElementName=root, Path=DataContext.HOVER_Command}" CommandParameter="{Binding traydata.hwnd}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <Button.InputBindings>
+                                <MouseBinding
+                                    Command="{Binding ElementName=root, Path=DataContext.R_CLICK_Command}"
+                                    CommandParameter="{Binding traydata.hwnd}"
+                                    MouseAction="RightClick" />
+                                <MouseBinding
+                                    Command="{Binding ElementName=root, Path=DataContext.L_CLICK_Command}"
+                                    CommandParameter="{Binding traydata.hwnd}"
+                                    MouseAction="LeftClick" />
+                                <MouseBinding
+                                    Command="{Binding ElementName=root, Path=DataContext.L_DB_CLICK_Command}"
+                                    CommandParameter="{Binding traydata.hwnd}"
+                                    MouseAction="LeftDoubleClick" />
+
+
+                            </Button.InputBindings>
+
+
+                            <Image Width="16" Source="{Binding icon}" />
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <ListBox
+                x:Name="lst"
+                Grid.Column="2"
+                Background="Transparent"
+                BorderThickness="0"
+                ItemsSource="{Binding TrayItems}"
+                Visibility="Collapsed">
+                <ListBox.Resources>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Focusable" Value="False" />
+                        <Setter Property="Template" Value="{DynamicResource SimpleListBoxItem}" />
+                    </Style>
+                </ListBox.Resources>
+                <ListBox.ItemTemplate>
+                    <ItemContainerTemplate>
+
+                        <Button Style="{DynamicResource ItemButton}" ToolTip="{Binding tip}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding ElementName=root, Path=DataContext.HOVER_Command}" CommandParameter="{Binding traydata.hwnd}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <Button.InputBindings>
+                                <MouseBinding
+                                    Command="{Binding ElementName=root, Path=DataContext.R_CLICK_Command}"
+                                    CommandParameter="{Binding traydata.hwnd}"
+                                    MouseAction="RightClick" />
+                                <MouseBinding
+                                    Command="{Binding ElementName=root, Path=DataContext.L_CLICK_Command}"
+                                    CommandParameter="{Binding traydata.hwnd}"
+                                    MouseAction="LeftClick" />
+                                <MouseBinding
+                                    Command="{Binding ElementName=root, Path=DataContext.L_DB_CLICK_Command}"
+                                    CommandParameter="{Binding traydata.hwnd}"
+                                    MouseAction="LeftDoubleClick" />
+
+
+                            </Button.InputBindings>
+
+
+                            <Image Width="16" Source="{Binding icon}" />
+                        </Button>
+                    </ItemContainerTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </StackPanel>
+
+    </Grid>
+</UserControl>
