@@ -10,7 +10,7 @@
 
 
 
-    <SolidColorBrush x:Key="WinBlurBackgroundBrush" Color="#80f3f3f3" />
+    <SolidColorBrush x:Key="WinBlurBackgroundBrush" Color="#A0f3f3f3" />
     <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimaryColor}" />
     <SolidColorBrush x:Key="TextReverseBrush" Color="{StaticResource TextReverseColor}" />
 

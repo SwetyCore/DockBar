@@ -18,6 +18,7 @@ namespace DockBar
         private void WindowCloseMenuItem_Click(object sender, RoutedEventArgs e)
         {
             Close();
+            Environment.Exit(0);
         }
 
         private void SettingWindowMenuItem_Click(object sender, RoutedEventArgs e)

@@ -33,4 +33,18 @@ namespace DefalutPlugin
         public Type mainView => typeof(View.TrayControl);
 
     }
+
+    public class PowerPlugin : IPlugin
+    {
+        public static pluginInfo info => new pluginInfo()
+        {
+            name = "电量",
+            description = "是电量显示捏",
+            settingPage = typeof(View.SettingPage)
+        };
+
+
+        public Type mainView => typeof(View.BatteryControl);
+
+    }
 }
