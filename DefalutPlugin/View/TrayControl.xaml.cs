@@ -42,5 +42,10 @@ namespace DefalutPlugin.View
 
 
         }
+
+        private void Button_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled =true;
+        }
     }
 }

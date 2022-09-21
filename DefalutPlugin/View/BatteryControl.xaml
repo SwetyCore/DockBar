@@ -29,6 +29,8 @@
             <Button.ToolTip>
 
                 <TextBlock VerticalAlignment="Center" FontSize="14">
+                    <Run Text="电量还剩" />
+
                     <Run Text="{Binding Battery.EstimatedCharge, Mode=OneWay}" />
                     <Run Text="%" />
                 </TextBlock>
@@ -47,8 +49,10 @@
                 <TextBlock
                     VerticalAlignment="Center"
                     FontFamily="Segoe Fluent Icons"
-                    FontSize="32"
-                    Text="&#xea93;" />
+                    FontSize="28"
+                    SnapsToDevicePixels="True"
+                    Text="&#xea93;"
+                    TextOptions.TextFormattingMode="Display" />
             </StackPanel>
         </Button>
 
@@ -70,8 +74,7 @@
                 Margin="0"
                 Padding="10"
                 Background="{DynamicResource WinBlurBackgroundBrush}"
-                BorderBrush="Gray"
-                BorderThickness="1"
+                BorderThickness="0"
                 CornerRadius="4">
 
                 <Grid>
@@ -99,7 +102,7 @@
                     </StackPanel>
 
 
-                    <Grid Grid.Row="1" Margin="10,0">
+                    <Grid Grid.Row="1" Margin="10,0,10,10">
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
@@ -116,9 +119,8 @@
                         </StackPanel>
                         <Border
                             Grid.Row="1"
-                            Padding="10"
+                            Padding="10,10,10,10"
                             Background="{DynamicResource WinBlurBackgroundBrush}"
-                            BorderBrush="Gray"
                             BorderThickness="1"
                             CornerRadius="8">
                             <Grid>

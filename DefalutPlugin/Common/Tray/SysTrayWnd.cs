@@ -104,6 +104,10 @@ namespace FinderDemo.Common.Tray
                         int offset = 0;
                         iRet = Win32.ReadProcessMemory(hTrayProcess, (int)(tbButtonInfo.iString+offset), bytTextData, 1024, out iOut);
                         strTrayToolTip = Encoding.Unicode.GetString(bytTextData);
+                        if (strTrayToolTip.IndexOf("任务管理器")!=-1)
+                        {
+                            continue;
+                        }
                         if (!string.IsNullOrEmpty(strTrayToolTip))
                         {
                             int iNullIndex = strTrayToolTip.IndexOf('\0');

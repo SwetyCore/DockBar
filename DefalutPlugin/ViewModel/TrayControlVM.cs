@@ -63,7 +63,7 @@ namespace DefalutPlugin.ViewModel
         }
 
 
-        DispatcherTimer timer = new DispatcherTimer() { Interval = new TimeSpan(0, 0, 0, 10) };
+        DispatcherTimer timer = new DispatcherTimer() { Interval = new TimeSpan(0, 0, 0, 2) };
 
         public TrayControlVM()
         {
