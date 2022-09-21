@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:DockBar.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:viewmodel="clr-namespace:DockBar.ViewModel"
     Title="CommonSetting"
     d:DataContext="{d:DesignInstance Type=viewmodel:CommonSettingVM}"
@@ -12,12 +13,17 @@
 
     <Grid>
         <StackPanel>
-            <TextBlock FontSize="14" Text="主题" />
+            <TextBlock
+                FontSize="20"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                Text="主题" />
             <GroupBox
+                Margin="-8,8"
+                Padding="0,8"
                 BorderThickness="0"
-                Header="应用暗色主题"
-                Style="{DynamicResource GroupBoxOriginal}">
-                <CheckBox IsChecked="{Binding UseDarkTheme, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ToggleButtonSwitch}" />
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                Header="应用暗色主题">
+                <ui:ToggleSwitch IsChecked="{Binding UseDarkTheme, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </GroupBox>
 
 

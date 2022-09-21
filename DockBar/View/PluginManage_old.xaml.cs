@@ -20,10 +20,17 @@ namespace DockBar.View
     /// </summary>
     public partial class PluginManage : Page
     {
-        public PluginManage()
+        internal PluginManage()
         {
             InitializeComponent();
-            DataContext = Common.GlobalValues.pmvm;
         }
+
+
+
+
     }
+
+    
+    
+
 }

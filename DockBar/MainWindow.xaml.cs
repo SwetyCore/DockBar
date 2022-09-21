@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using HandyControl.Themes;
 namespace DockBar
 {
     /// <summary>
@@ -13,7 +12,8 @@ namespace DockBar
         public MainWindow()
         {
             InitializeComponent();
-            
+            Wpf.Ui.Appearance.Background.Apply(this, Wpf.Ui.Appearance.BackgroundType.Mica);
+
         }
 
         private void WindowCloseMenuItem_Click(object sender, RoutedEventArgs e)
@@ -25,7 +25,6 @@ namespace DockBar
         private void SettingWindowMenuItem_Click(object sender, RoutedEventArgs e)
         {
             new View.SettingWindow().Show();
-            this.UpdateLayout();
         }
 
         protected override void OnSourceInitialized(EventArgs e)

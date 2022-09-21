@@ -8,10 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="View\PluginManage_old.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="View\PluginManage._oldxaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="View\PluginManage_old.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
-    <PackageReference Include="HandyControl" Version="3.3.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+    <PackageReference Include="WPF-UI" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>

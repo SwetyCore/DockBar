@@ -11,24 +11,19 @@
     Width="1920"
     Height="32"
     helper:DesktopAppBar.AppBar="Top"
-    helper:WindowBlur.IsEnabled="True"
-    Background="{DynamicResource WinBlurBackgroundBrush}"
+    Background="Transparent"
     Left="0"
-    ResizeMode="NoResize"
+    ResizeMode="CanMinimize"
     Top="0"
     Topmost="True"
     WindowStyle="None"
     mc:Ignorable="d">
     <Window.ContextMenu>
-        <ContextMenu
-            Padding="4"
-            helper:ContextMenuBlur.On="True"
-            Style="{StaticResource ContextMenu}">
+        <ContextMenu Padding="4" helper:ContextMenuBlur.On="True">
             <MenuItem
                 Name="setting"
                 Click="SettingWindowMenuItem_Click"
-                Header="设置"
-                Style="{StaticResource MenuItem}">
+                Header="设置">
                 <MenuItem.Icon>
                     <TextBlock
                         HorizontalAlignment="Right"
@@ -40,8 +35,7 @@
             <MenuItem
                 Name="exit"
                 Click="WindowCloseMenuItem_Click"
-                Header="关闭"
-                Style="{StaticResource MenuItem}">
+                Header="关闭">
                 <MenuItem.Icon>
                     <TextBlock
                         HorizontalAlignment="Right"
@@ -76,6 +70,7 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
+
                 <ItemsControl Grid.Column="1" ItemsSource="{Binding CenterContainer}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>

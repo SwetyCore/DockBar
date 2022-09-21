@@ -6,77 +6,84 @@
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:DockBar.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:view="clr-namespace:DockBar.View"
     Title="SettingWindow"
-    Width="800"
-    Height="450"
-    Background="{DynamicResource SecondaryRegionBrush}"
-    Icon="{x:Null}"
+    Width="1080"
+    Height="720"
+    ResizeMode="CanMinimize"
+    WindowStyle="None"
     mc:Ignorable="d">
+    <WindowChrome.WindowChrome>
+        <WindowChrome
+            CaptionHeight="1"
+            CornerRadius="0"
+            GlassFrameThickness="-1"
+            NonClientFrameEdges="None"
+            ResizeBorderThickness="4"
+            UseAeroCaptionButtons="False" />
+    </WindowChrome.WindowChrome>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <ListBox
-            Margin="4"
-            Padding="4"
-            hc:BorderElement.CornerRadius="8"
-            Background="Transparent"
-            BorderThickness="0"
-            SelectionChanged="ListBox_SelectionChanged">
-            <ListBox.Resources>
-                <Style TargetType="TextBlock">
-                    <Setter Property="FontSize" Value="16" />
-                </Style>
-            </ListBox.Resources>
-            <ListBoxItem Margin="4">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock
-                        Margin="4"
-                        VerticalAlignment="Center"
-                        FontFamily="Segoe Fluent Icons"
-                        Text="&#xe74c;" />
-                    <TextBlock VerticalAlignment="Center">
-                        <Run Text="插件管理" />
-                    </TextBlock>
-                </StackPanel>
-            </ListBoxItem>
-
-            <ListBoxItem Margin="4">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock
-                        Margin="4"
-                        VerticalAlignment="Center"
-                        FontFamily="Segoe Fluent Icons"
-                        Text="&#xe946;" />
-                    <TextBlock VerticalAlignment="Center">
-                        <Run Text="通用" />
-                    </TextBlock>
-                </StackPanel>
-            </ListBoxItem>
-
-            <ListBoxItem Margin="4">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock
-                        Margin="4"
-                        VerticalAlignment="Center"
-                        FontFamily="Segoe Fluent Icons"
-                        Text="&#xe946;" />
-                    <TextBlock VerticalAlignment="Center">
-                        <Run Text="关于" />
-                    </TextBlock>
-                </StackPanel>
-            </ListBoxItem>
 
 
-        </ListBox>
+        <ui:TitleBar
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            ShowMaximize="False"
+            UseSnapLayout="False" />
 
 
-        <Frame
-            x:Name="RootFrame"
-            Grid.Column="1"
-            Margin="4"
-            BorderThickness="0"
-            NavigationUIVisibility="Hidden" />
+        <ui:NavigationFluent
+            Name="RootNavigation"
+            Grid.Row="1"
+            Margin="8,40"
+            Frame="{Binding ElementName=RootFrame}"
+            SelectedPageIndex="0">
+            <ui:NavigationFluent.Items>
+
+                <ui:NavigationItem
+                    Content="插件管理"
+                    PageTag="插件管理"
+                    PageType="{x:Type view:PluginManage}" />
+                <ui:NavigationItem
+                    Content="程序设置"
+                    PageTag="程序设置"
+                    PageType="{x:Type view:CommonSetting}" />
+                <ui:NavigationItem
+                    Content="关于"
+                    Cursor="Hand"
+                    PageTag="关于"
+                    PageType="{x:Type view:CommonSetting}" />
+            </ui:NavigationFluent.Items>
+        </ui:NavigationFluent>
+
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <ui:Breadcrumb
+                Grid.Row="0"
+                Margin="18"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontSize="24"
+                Navigation="{Binding ElementName=RootNavigation}" />
+            <Frame
+                x:Name="RootFrame"
+                Grid.Row="1"
+                Margin="20,0,10,10"
+                BorderThickness="0"
+                NavigationUIVisibility="Hidden" />
+        </Grid>
     </Grid>
 </Window>
