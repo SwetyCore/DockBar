@@ -40,6 +40,7 @@ namespace DockBar.View
             }
             if (i == 1)
             {
+                RootFrame.Navigate(new CommonSetting());
 
             }
             if (i == 2)

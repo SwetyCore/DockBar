@@ -12,39 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static PluginBase.PluginBase;
-using DefalutPlugin.ViewModel;
 
-
-namespace DefalutPlugin.View
+namespace DockBar.View
 {
     /// <summary>
-    /// ClockControl.xaml 的交互逻辑
+    /// CommonSetting.xaml 的交互逻辑
     /// </summary>
-    public partial class ClockControl : IPluginControl
+    public partial class CommonSetting : Page
     {
-        public ClockControl(Guid g)
+        public CommonSetting()
         {
             InitializeComponent();
-
-            PluginGuid = g;
-
+            DataContext = new ViewModel.CommonSettingVM();
         }
 
-        public Guid PluginGuid { get; set; }
-
-        public pluginInfo pluginInfo => ClockPlugin.info;
-
-
-        public void OnDisabled()
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-        }
-
-        public void OnEnabled()
-        {
-            DataContext = new ClockViewModel(PluginGuid);
 
         }
-
     }
 }

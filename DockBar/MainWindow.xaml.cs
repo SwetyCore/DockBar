@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-
+using HandyControl.Themes;
 namespace DockBar
 {
     /// <summary>
@@ -13,6 +13,7 @@ namespace DockBar
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private void WindowCloseMenuItem_Click(object sender, RoutedEventArgs e)

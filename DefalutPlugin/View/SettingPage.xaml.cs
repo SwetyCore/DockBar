@@ -20,12 +20,10 @@ namespace DefalutPlugin.View
     /// </summary>
     public partial class SettingPage : Page
     {
-        public Guid guid { get; set; }
         public SettingPage(Guid g)
         {
             InitializeComponent();
-            guid = g;
-            DataContext = this;
+            DataContext = new ViewModel.SettingVM(g);
         }
     }
 }

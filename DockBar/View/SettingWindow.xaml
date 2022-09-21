@@ -9,6 +9,7 @@
     Title="SettingWindow"
     Width="800"
     Height="450"
+    Background="{DynamicResource SecondaryRegionBrush}"
     Icon="{x:Null}"
     mc:Ignorable="d">
     <Grid>

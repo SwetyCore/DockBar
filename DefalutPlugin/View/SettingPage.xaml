@@ -5,15 +5,32 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:DefalutPlugin.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:DefalutPlugin.ViewModel"
     Title="SettingPage"
+    d:DataContext="{d:DesignInstance Type=viewmodel:SettingVM}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
 
-    <Grid>
-        <StackPanel>
-            <TextBlock FontSize="20" Text="这里是插件Test的设置界面" />
-            <TextBlock FontSize="20" Text="{Binding guid}" />
+    <Grid Margin="8">
+        <StackPanel HorizontalAlignment="Stretch">
+            <TextBlock
+                FontSize="20"
+                FontWeight="Bold"
+                Text="设置" />
+            <TextBlock Foreground="Gray" Text="{Binding Clock_Setting.guid}" />
+            <TextBlock FontSize="16" Text="时钟格式" />
+            <GroupBox
+                Margin="0,4"
+                BorderThickness="0"
+                Header="格式化字符串">
+                <TextBox HorizontalAlignment="Stretch" Text="{Binding Clock_Setting.formatstr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </GroupBox>
+            <Button
+                HorizontalAlignment="Stretch"
+                Command="{Binding SaveClockSettingCommand}"
+                Content="应用" />
+
         </StackPanel>
     </Grid>
 </Page>
