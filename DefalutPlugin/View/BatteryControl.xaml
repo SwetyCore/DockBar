@@ -1,4 +1,4 @@
-﻿<UserControl
+﻿<pc:PluginControl
     x:Class="DefalutPlugin.View.BatteryControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,6 +8,7 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:DefalutPlugin.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pc="clr-namespace:PluginBase;assembly=PluginBase"
     xmlns:vm="clr-namespace:DefalutPlugin.ViewModel"
     d:DataContext="{d:DesignInstance Type=vm:PowerPopup_VM}"
     mc:Ignorable="d">
@@ -167,4 +168,4 @@
 
 
 
-</UserControl>
+</pc:PluginControl>

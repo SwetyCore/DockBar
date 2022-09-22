@@ -1,25 +1,34 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Controls;
 using System.Windows.Media;
+using static PluginBase.PluginBase;
 
 namespace PluginBase
 {
-    public class PluginBase
+    public abstract class PluginControl: UserControl
     {
-        public interface IPluginControl 
+       
+        
+        public Guid PluginGuid { get; set; }
+
+        public abstract void OnEnabled();
+
+        public abstract void OnDisabled();
+
+        public abstract pluginInfo pluginInfo { get; }
+
+        public string GetPluginConfigFilePath()
         {
-            public Guid PluginGuid { get; }
-
-            public void OnEnabled();
-
-            public void OnDisabled();
-
-            public pluginInfo pluginInfo { get; }
-
+            var abl = Path.GetDirectoryName(System.Reflection.Assembly.GetCallingAssembly().Location);
+            return Path.Combine(abl, $"{PluginGuid}.json");
         }
 
 
+    }
+    public class PluginBase
+    {
 
         public class pluginInfo
         {

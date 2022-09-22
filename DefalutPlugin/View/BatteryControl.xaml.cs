@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using DefalutPlugin.Events;
+using PluginBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,32 +24,35 @@ namespace DefalutPlugin.View
     /// <summary>
     /// BatteryControl.xaml 的交互逻辑
     /// </summary>
-    public partial class BatteryControl : UserControl,IPluginControl
+    public partial class BatteryControl : PluginControl
     {
         public BatteryControl(Guid g)
         {
             InitializeComponent();
             PluginGuid = g;
+
         }
 
-        public Guid PluginGuid { get; set; }
-
-        public pluginInfo pluginInfo => PowerPlugin.info;
+        
 
 
         private static Battery BatteryMonitor = new Battery();
 
-        public void OnDisabled()
+        public override pluginInfo pluginInfo => PowerPlugin.info;
+
+        public override void OnDisabled()
         {
             BatteryMonitor.Stop();
             BatteryMonitor.Dispose();
         }
 
-        public void OnEnabled()
+        public override void OnEnabled()
         {
             DataContext = new ViewModel.PowerPopup_VM();
             BatteryMonitor.Changed += Battery_Changed;
             BatteryMonitor.Start();
+
+            MessageBox.Show(GetPluginConfigFilePath());
         }
 
         private void Battery_Changed(object sender, BatteryEventargs args)
@@ -59,5 +63,7 @@ namespace DefalutPlugin.View
                 Arg = args.Args
             });
         }
+
+
     }
 }

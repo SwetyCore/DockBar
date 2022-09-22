@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DockBar.Model;
+using PluginBase;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -58,7 +59,7 @@ namespace DockBar.ViewModel
                 GetContainer=SetContainer();
             }
         }
-        private ObservableCollection<IPluginControl> SetContainer()
+        private ObservableCollection<PluginControl> SetContainer()
         {
             switch (SelectedTabIndex)
             {
@@ -71,7 +72,7 @@ namespace DockBar.ViewModel
 
 
         [ObservableProperty]
-        private ObservableCollection<IPluginControl> getContainer;
+        private ObservableCollection<PluginControl> getContainer;
 
 
         [RelayCommand]
@@ -89,7 +90,7 @@ namespace DockBar.ViewModel
             {
                 return;
             }
-            var i = Activator.CreateInstance(pi.plugin.mainView, System.Guid.NewGuid()) as IPluginControl;
+            var i = Activator.CreateInstance(pi.plugin.mainView, System.Guid.NewGuid()) as PluginControl;
             //pi.plugin.instances.Add(i);
             GetContainer.Add(i );
             i.OnEnabled();
@@ -98,7 +99,7 @@ namespace DockBar.ViewModel
         [RelayCommand]
         private void RemoveItem(object item)
         {
-            var i = item as IPluginControl;
+            var i = item as PluginControl;
             GetContainer.Remove(i);
             i.OnDisabled();
 
@@ -107,7 +108,7 @@ namespace DockBar.ViewModel
         [RelayCommand]
         private void OpemItemSetting(object item)
         {
-            var i = item as IPluginControl;
+            var i = item as PluginControl;
             if (i.pluginInfo.settingPage == null)
             {
                 return ;

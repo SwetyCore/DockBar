@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PluginBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,24 +20,25 @@ namespace DefalutPlugin.View
     /// <summary>
     /// TrayControl.xaml 的交互逻辑
     /// </summary>
-    public partial class TrayControl : UserControl, IPluginControl
+    public partial class TrayControl :  PluginControl
     {
         public TrayControl(Guid g)
         {
             InitializeComponent();
             PluginGuid = g;
+
         }
 
-        public Guid PluginGuid { get; set; }
 
-        public pluginInfo pluginInfo => TrayPlugin.info;
 
-        public void OnDisabled()
+        public override pluginInfo pluginInfo => TrayPlugin.info;
+
+        public override void OnDisabled()
         {
             (DataContext as ViewModel.TrayControlVM).Stop();
         }
 
-        public void OnEnabled()
+        public override void OnEnabled()
         {
             DataContext = new ViewModel.TrayControlVM();
 

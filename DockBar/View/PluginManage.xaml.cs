@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PluginBase;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace DockBar.View
 
         private void LBoxSort_Drop(object sender, DragEventArgs e)
         {
-            var items = (LBoxSort.ItemsSource as ObservableCollection<IPluginControl>);
+            var items = (LBoxSort.ItemsSource as ObservableCollection<PluginControl>);
             var pos = e.GetPosition(LBoxSort);
             var result = VisualTreeHelper.HitTest(LBoxSort, pos);
             if (result == null)
@@ -46,7 +47,7 @@ namespace DockBar.View
             }
             //查找元数据
             var fs = e.Data.GetFormats();
-            var sourcePerson =e.Data.GetData(fs.FirstOrDefault()) as IPluginControl;
+            var sourcePerson =e.Data.GetData(fs.FirstOrDefault()) as PluginControl;
             if (sourcePerson == null)
             {
                 return;
@@ -57,7 +58,7 @@ namespace DockBar.View
             {
                 return;
             }
-            var targetPerson = (listBoxItem.Content )as  IPluginControl;
+            var targetPerson = (listBoxItem.Content )as  PluginControl;
             if (ReferenceEquals(targetPerson, sourcePerson))
             {
                 return;

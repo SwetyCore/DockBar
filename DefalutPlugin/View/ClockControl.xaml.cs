@@ -14,14 +14,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static PluginBase.PluginBase;
 using DefalutPlugin.ViewModel;
-
+using PluginBase;
 
 namespace DefalutPlugin.View
 {
     /// <summary>
     /// ClockControl.xaml 的交互逻辑
     /// </summary>
-    public partial class ClockControl : IPluginControl
+    public partial class ClockControl : PluginControl
     {
         public ClockControl(Guid g)
         {
@@ -31,19 +31,19 @@ namespace DefalutPlugin.View
 
         }
 
-        public Guid PluginGuid { get; set; }
 
-        public pluginInfo pluginInfo => ClockPlugin.info;
+        public override pluginInfo pluginInfo => ClockPlugin.info;
 
 
-        public void OnDisabled()
+        public override void OnDisabled()
         {
         }
 
-        public void OnEnabled()
+        public override void OnEnabled()
         {
             DataContext = new ClockViewModel(PluginGuid);
-
+            var a = GetPluginConfigFilePath();
+            MessageBox.Show(a);
         }
 
     }

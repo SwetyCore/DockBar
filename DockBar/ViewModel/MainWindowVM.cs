@@ -8,18 +8,20 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using static PluginBase.PluginBase;
+using PluginBase;
+
 
 namespace DockBar.ViewModel
 {
     partial class MainWindowVM:ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<IPluginControl> leftContainer = new ObservableCollection<IPluginControl>();
+        private ObservableCollection<PluginControl> leftContainer = new ObservableCollection<PluginControl>();
 
         [ObservableProperty]
-        private ObservableCollection<IPluginControl> centerContainer = new ObservableCollection<IPluginControl>();
+        private ObservableCollection<PluginControl> centerContainer = new ObservableCollection<PluginControl>();
 
         [ObservableProperty]
-        private ObservableCollection<IPluginControl> rightContainer = new ObservableCollection<IPluginControl>();
+        private ObservableCollection<PluginControl> rightContainer = new ObservableCollection<PluginControl>();
     }
 }
