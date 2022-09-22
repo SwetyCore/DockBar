@@ -52,7 +52,6 @@ namespace DefalutPlugin.View
             BatteryMonitor.Changed += Battery_Changed;
             BatteryMonitor.Start();
 
-            MessageBox.Show(GetPluginConfigFilePath());
         }
 
         private void Battery_Changed(object sender, BatteryEventargs args)

@@ -13,6 +13,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Wpf.Ui.Controls;
 
 namespace DockBar.View
 {
@@ -24,16 +25,16 @@ namespace DockBar.View
         public SettingWindow()
         {
             InitializeComponent();
-            Wpf.Ui.Appearance.Background.Apply(this, Wpf.Ui.Appearance.BackgroundType.Mica);
+            //Wpf.Ui.Appearance.Background.Apply(this, Wpf.Ui.Appearance.BackgroundType.Mica);
         }
 
         protected override void OnSourceInitialized(EventArgs e)
         {
-            var source = (HwndSource)PresentationSource.FromVisual(this);
-            Common.BlurUtils.EnableDropShadow(
-                source.Handle,
-                new Margins(0, 0, 0, 0)
-                );
+            //var source = (HwndSource)PresentationSource.FromVisual(this);
+            //Common.BlurUtils.EnableDropShadow(
+            //    source.Handle,
+            //    new Margins(0, 0, 0, 0)
+            //    );
             base.OnSourceInitialized(e);    
         }
 

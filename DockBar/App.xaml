@@ -7,21 +7,10 @@
     StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-
-
             <ResourceDictionary.MergedDictionaries>
-
-
-
-                <!--<ResourceDictionary Source="Style/index.xaml" />-->
-
                 <ui:ControlsDictionary />
-                <ui:ThemesDictionary Theme="Light" />
-
+                <ui:ThemesDictionary Theme="Dark" />
             </ResourceDictionary.MergedDictionaries>
-
-
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

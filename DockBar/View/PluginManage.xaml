@@ -58,7 +58,7 @@
                 Drop="LBoxSort_Drop"
                 ItemsSource="{Binding GetContainer}"
                 PreviewMouseMove="LBoxSort_PreviewMouseMove">
-                <ItemsControl.ItemTemplate>
+                <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border>
 
@@ -132,7 +132,7 @@
                             </StackPanel>
                         </ui:CardControl>-->
                     </DataTemplate>
-                </ItemsControl.ItemTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
     </Grid>

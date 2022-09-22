@@ -8,6 +8,7 @@
     Title="PluginSettingWindow"
     Width="800"
     Height="450"
+    Background="{DynamicResource ApplicationBackgroundBrush}"
     mc:Ignorable="d">
     <Frame x:Name="frame" />
 </Window>

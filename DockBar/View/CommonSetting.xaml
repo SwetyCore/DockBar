@@ -17,14 +17,13 @@
                 FontSize="20"
                 Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                 Text="主题" />
-            <GroupBox
-                Margin="-8,8"
-                Padding="0,8"
-                BorderThickness="0"
-                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                Header="应用暗色主题">
+            <ui:CardControl
+                Margin="0,8"
+                Header="应用暗色主题"
+                Icon="Whiteboard24">
+
                 <ui:ToggleSwitch IsChecked="{Binding UseDarkTheme, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            </GroupBox>
+            </ui:CardControl>
 
 
         </StackPanel>

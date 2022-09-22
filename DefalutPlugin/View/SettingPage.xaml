@@ -18,7 +18,7 @@
                 FontSize="20"
                 FontWeight="Bold"
                 Text="设置" />
-            <TextBlock Foreground="Gray" Text="{Binding Clock_Setting.guid}" />
+            <TextBlock Text="{Binding Clock_Setting.guid}" />
             <TextBlock FontSize="16" Text="时钟格式" />
             <GroupBox
                 Margin="0,4"

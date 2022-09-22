@@ -43,7 +43,6 @@ namespace DefalutPlugin.View
         {
             DataContext = new ClockViewModel(PluginGuid);
             var a = GetPluginConfigFilePath();
-            MessageBox.Show(a);
         }
 
     }

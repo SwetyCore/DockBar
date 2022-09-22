@@ -11,18 +11,11 @@
     Title="SettingWindow"
     Width="1080"
     Height="720"
-    ResizeMode="CanMinimize"
-    WindowStyle="None"
+    Background="{DynamicResource ApplicationBackgroundBrush}"
     mc:Ignorable="d">
-    <WindowChrome.WindowChrome>
-        <WindowChrome
-            CaptionHeight="1"
-            CornerRadius="0"
-            GlassFrameThickness="-1"
-            NonClientFrameEdges="None"
-            ResizeBorderThickness="4"
-            UseAeroCaptionButtons="False" />
-    </WindowChrome.WindowChrome>
+    <!--<WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" GlassFrameThickness="-1" />
+    </WindowChrome.WindowChrome>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -34,11 +27,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <ui:TitleBar
-            Grid.Row="0"
-            Grid.ColumnSpan="2"
-            ShowMaximize="False"
-            UseSnapLayout="False" />
+        <!--<ui:TitleBar Grid.Row="0" Grid.ColumnSpan="2" />-->
 
 
         <ui:NavigationFluent

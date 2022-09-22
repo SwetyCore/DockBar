@@ -23,6 +23,7 @@ namespace DockBar.View
         {
             InitializeComponent();
             frame.Content = p;
+
         }
     }
 }

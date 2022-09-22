@@ -121,6 +121,9 @@ namespace DockBar.View
 
         }
 
+        private void LBoxSort_PreviewMouseMove(object sender, MouseButtonEventArgs e)
+        {
 
+        }
     }
 }
