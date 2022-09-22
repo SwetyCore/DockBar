@@ -52,11 +52,53 @@
                 x:Name="LBoxSort"
                 Grid.Row="1"
                 Margin="4"
+                AllowDrop="True"
                 BorderThickness="0"
-                ItemsSource="{Binding GetContainer}">
+                DragOver="LBoxSort_DragOver"
+                Drop="LBoxSort_Drop"
+                ItemsSource="{Binding GetContainer}"
+                PreviewMouseMove="LBoxSort_PreviewMouseMove">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <ui:CardControl Icon="Apps24">
+                        <Border>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                    <TextBlock
+                                        FontSize="13"
+                                        FontWeight="Medium"
+                                        Text="{Binding pluginInfo.name}" />
+                                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorTertiaryBrush}">
+                                        <Run Text="{Binding pluginInfo.description}" />
+                                        <Run Text="{Binding PluginGuid}" />
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Right"
+                                    Orientation="Horizontal">
+                                    <ui:Button
+                                        Margin="4,0"
+                                        Padding="20,8"
+                                        Appearance="Primary"
+                                        Command="{Binding ElementName=root, Path=DataContext.OpemItemSettingCommand}"
+                                        CommandParameter="{Binding}"
+                                        Content="设置" />
+                                    <ui:Button
+                                        Padding="20,8"
+                                        Appearance="Danger"
+                                        Command="{Binding ElementName=root, Path=DataContext.RemoveItemCommand}"
+                                        CommandParameter="{Binding}"
+                                        Content="移除" />
+
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <!--<ui:CardControl Icon="Apps24" PreviewMouseMove="LBoxSort_PreviewMouseMove">
                             <ui:CardControl.Header>
                                 <StackPanel Grid.Column="0" VerticalAlignment="Center">
                                     <TextBlock
@@ -86,8 +128,9 @@
                                     Command="{Binding ElementName=root, Path=DataContext.RemoveItemCommand}"
                                     CommandParameter="{Binding}"
                                     Content="移除" />
+
                             </StackPanel>
-                        </ui:CardControl>
+                        </ui:CardControl>-->
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ListBox>

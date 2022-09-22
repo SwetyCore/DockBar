@@ -10,7 +10,6 @@
     Title="MainWindow"
     Width="1920"
     Height="32"
-    helper:DesktopAppBar.AppBar="Top"
     Background="Transparent"
     Left="0"
     ResizeMode="CanMinimize"
